@@ -3,4 +3,8 @@ from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
-    return HttpResponse("Game Guager!")
+    return HttpResponse("Game Guager! <br/> <a href='/rango/about/'>About</a>")
+
+def about(request):
+    return HttpResponse("this is the about page <br/> <a href='/rango/'>Index</a>")
+
