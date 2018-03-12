@@ -1,20 +1,24 @@
 <!DOCTYPE html>
+
+{% load staticfiles %}
+
 <html>
 
-    <head>
-            <title>Game Gauger!</title>
-    </head>
+<head>
+    <title>Game Gauger!</title>
+</head>
 
-    <body>
-        <h1>Welcome to the website!</h1>
-        <div>
-            Here are things <br />
-            <strong>{{ boldmessage }}</strong><br />
-        </div>
+<body>
+    <h1>Welcome to the website!</h1>
+    <div>
+        Here are things <br />
+        <strong>{{ boldmessage }}</strong><br />
+    </div>
 
-        <div>
-            <a href="/rango/about/">About</a><br />
-        </div>
-    </body>
+    <div>
+        <a href="/rango/about/">About</a><br />
+        <img src="{% static "images/250px-Dark_knight_returns.jpg" %}" alt="Buttman" /> 
+    </div>
+</body>
 
 </html>
