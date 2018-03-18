@@ -1,5 +1,6 @@
 from django.db import models
 import numpy as np
+from datetime import datetime
 
 
 class Game(models.Model):
@@ -26,7 +27,8 @@ class Review(models.Model):
         (5, '5'),
     )
     game = models.ForeignKey(Game)
-    pub_date = models.DateTimeField('date published')
+    comment_date = models.DateTimeField(auto_now=True)
     user_name = models.CharField(max_length=100)
     comment = models.CharField(max_length=2000)
     rating = models.IntegerField(choices=RATING_CHOICES)
+    
