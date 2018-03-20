@@ -1,7 +1,5 @@
 from django.db import models
 import numpy as np
-from datetime import datetime
-
 
 class Game(models.Model):
     name = models.CharField(max_length=100, unique=True)
