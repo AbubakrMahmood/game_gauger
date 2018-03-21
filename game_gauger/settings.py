@@ -32,7 +32,8 @@ SECRET_KEY = 'xwj4bfq9+v+z65f5su9j2*ig=b50apiw@_--l8*x590x3qn6ye'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1',
+                 'gamergauger.pythonanywhere.com',]
 
 
 # Application definition
