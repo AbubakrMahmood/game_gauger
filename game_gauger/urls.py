@@ -24,5 +24,9 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^reviews/$', views.index, name='index'),
     url(r'^reviews/about', views.about, name='about'),
+    url(r'^reviews/featured', views.featured, name='featured'),
+    url(r'^reviews/signinsignup', views.signinsignup, name='signinsignup'),
+    url(r'^reviews/addgame', views.addgame, name='addgame'),
+    url(r'^reviews/categories', views.categories, name='categories'),
     url(r'^admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

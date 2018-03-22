@@ -11,12 +11,17 @@ def index(request):
 def about(request):
     return render(request, 'reviews/about.html')
 
+def featured(request):
+    return render(request, 'reviews/featured.html')
+
 def FAQs(request):
     return render(request, 'reviews/FAQ.html')
 
 def categories(request):
     return render(request, 'reviews/categories.html')
 
-def featured(request):
-    return render(request, 'reviews/featured.html')
+def signinsignup(request):
+    return render(request, 'reviews/signinsignup.html')
 
+def addgame(request):
+    return render(request, 'reviews/addgame.html')

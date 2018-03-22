@@ -1,19 +1,11 @@
 <!DOCTYPE html>
+{% extends 'reviews/base.html' %}
+
 {% load staticfiles %}
 
-<html>
-<head>
-    <title>Game Gauger</title>
-</head>
-<body>
+ {% block body %}
     <h1>Welcome to the Game Gauger!</h1>
-        <div>
-        <a href="/reviews/">Home</a>
-        <a href="/reviews/categories/">Categories</a>
-        <a href="/reviews/featured/">Featured</a>
-        <a href="/reviews/addgame/">Add Game</a>
-        <a href="/reviews/signin/">Sign in/Sign up</a>
-    </div>
+
     <div>
         {% if games %}
 
@@ -25,11 +17,4 @@
         <strong>There are no games present.</strong>
         {% endif %}
 
-    </div>
-
-    <div>
-        <a href="/reviews/about/">About</a><br />
-    </div>
-
-</body>
-</html>
+{% endblock %}

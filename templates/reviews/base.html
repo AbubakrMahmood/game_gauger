@@ -2,17 +2,50 @@
 <html>
     <head>
         <title>Game Gauger</title>
+        <!DOCTYPE html>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'reviews/style.css' %}"
+    <!-- A grey horizontal navbar that becomes vertical on small screens -->
+    <nav class="navbar navbar-expand-sm bg-light">
+
     </head>
 
     <body>
-    {% block content %}
-        <h1>Welcome to the Game Gauger!</h1>
-        <div>
-        <a href="/reviews/">Home</a>
-        <a href="/reviews/categories/">Categories</a>
-        <a href="/reviews/featured/">Featured</a>
-        <a href="/reviews/addgame/">Add Game</a>
-        <a href="/reviews/signin/">Sign in/Sign up</a>
-    {% endblock content %}
+         <div class="site-wrapper">
+    <div>
+    <nav class="navbar navbar-expand-sm bg-light">
+        <!-- Links -->
+      <a class="navbar-brand" href="/reviews">Game Gauger</a>
+        <ul class="navbar-nav">
+    <li class="active">
+        <a class="nav-link" href="/reviews">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/reviews/categories">Categories</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/reviews/featured">Featured</a>
+    </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/reviews/addgame">Add Game</a>
+    </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/reviews/signinsignup">Sign in/Sign up</a>
+    </li>
+        </ul>
+    </nav>
+    </div>
+<div class="body">
+{% block body %}
+
+{% endblock %}
+</div>
+
+          <div class="footer">
+              <a href="/reviews/about">
+
+              <p>ABOUT US</p></a>
+          </div>
     </body>
 </html>

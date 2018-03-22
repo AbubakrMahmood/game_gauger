@@ -3,5 +3,9 @@ from reviews import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^$', views.about, name='about'),
+    url(r'^about/$', views.about, name='about'),
+    url(r'^featured/$', views.featured, name='featured.html'),
+    url(r'^addgame/$',views.addgame,name='addgame'),
+
+
 ]
