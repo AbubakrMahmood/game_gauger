@@ -10,3 +10,13 @@ def index(request):
 
 def about(request):
     return render(request, 'reviews/about.html')
+
+def FAQs(request):
+    return render(request, 'reviews/FAQ.html')
+
+def categories(request):
+    return render(request, 'reviews/categories.html')
+
+def featured(request):
+    return render(request, 'reviews/featured.html')
+
