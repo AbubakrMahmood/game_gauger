@@ -6,7 +6,7 @@ import django
 django.setup()
 from reviews.models import Game, Reviews
 
-def populate();
+def populate():
     # list of dictionaries containing reviews to add to each game
     batman_arkham = [
         {"user_name" : "Bob",
@@ -40,9 +40,11 @@ def add_game(name, genre, publisher, developer, image):
     g = Game.objects.get_or_create(name=name, genre=genre, publisher=publisher
                                    developer=developer, image=image)[0]
     g.save()
-    return g
+    return g
 
-if __name__ == '__main__':
+
+if __name__ == '__main__':
+
     print("Starting Review population script...")
     populate()
 
