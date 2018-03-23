@@ -10,8 +10,8 @@
         {% if games %}
 
             {% for game in games %}
-                <img src="{{game.image.url}}" alt="{{game.game}} image">
-                <p>{{ game.game }}</p>
+                <a href="/reviews/{{game.UID}}"><img src="{{game.logo.url}}" alt="{{game.game}} image"></a>
+                <p><a href="/reviews/{{game.UID}}">{{ game.game }}</p> </a>
             {% endfor %}
         {% else %}
         <strong>There are no games present.</strong>

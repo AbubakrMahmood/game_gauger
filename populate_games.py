@@ -6,25 +6,26 @@ import django
 django.setup()
 from reviews.models import Game, Review
 from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
 
 def populate():
     # list of dictionaries containing reviews to add to each game
 
     
-    batman_arkham = add_game(game='Batman: Arkham Asylum',genre='Action',
+    batman_arkham = add_game(UID=1,game='Batman: Arkham Asylum',genre='Action',
                              publisher='Warner Bros. Interactive Entertainment',
                              developer='Rocksteady Studios',
-                             image='media/Batman_Arkham_Asylum_Videogame_Cover.jpg')
+                             logo='media/Batman_Arkham_Asylum_Videogame_Cover.jpg')
 
-    nier_automata = add_game(game='Nier Automata',genre='Action',
+    nier_automata = add_game(UID=2,game='Nier Automata',genre='Action',
                              publisher='Square Enix',
                              developer='‎PlatinumGames',
-                             image='media/Nier_Automata_Cover_JP.jpg')
+                             logo='media/Nier_Automata_Cover_JP.jpg')
 
-    super_mario_odyssey = add_game(game='Super Mario Odyssey',genre='Platform',
+    super_mario_odyssey = add_game(UID=3,game='Super Mario Odyssey',genre='Platform',
                              publisher='Nintendo',
                              developer='Nintendo EPD',
-                             image='media/super-mario-boxart.jpg')
+                             logo='media/super-mario-boxart.jpg')
     
     arkham_review = add_review(game='Batman: Arkham Asylum', user_name = 'bob', comment='empty',
                                rating=4)
@@ -56,9 +57,9 @@ def add_review(game, user_name, comment, rating=0):
     r.save()
     return r
 
-def add_game(game, genre, publisher, developer, image):
-    g = Game.objects.get_or_create(game=game, genre=genre, publisher=publisher,
-                                   developer=developer, image=image)[0]
+def add_game(UID,game, genre, publisher, developer, logo):
+    g = Game.objects.get_or_create(UID=UID,game=game, genre=genre, publisher=publisher,
+                                   developer=developer, logo=logo)[0]
     g.save()
     return g
 

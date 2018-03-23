@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from reviews.models import Game, Review
+from django.template import RequestContext
+from django.shortcuts import render_to_response
 
 # Create your views here.
 def index(request):
@@ -25,6 +27,10 @@ def signinsignup(request):
 
 def addgame(request):
     return render(request, 'reviews/addgame.html')
+
+def detail(request, UID):
+    game = Game.objects.get(pk=UID)
+    return render_to_response('reviews/detail.html', {'game':game}, RequestContext(request))
 
 #def show_game(request, game_name_slug):
 #    context_dict = {}

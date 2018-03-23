@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+{% extends 'reviews/base.html' %}
+
+{% load staticfiles %}
+
+ {% block body %}
+	<h1> {{game.game}}</h1>
+	<p> <img src="{{game.logo.url}}" > <br> Genre: {{game.genre}} <br>
+	Publisher: {{game.publisher}}<br>
+	Developer: {{game.developer}}<br>
+
+{% endblock %}
