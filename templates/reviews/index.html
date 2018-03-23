@@ -10,9 +10,9 @@
         {% if games %}
 
             {% for game in games %}
-                <img src="{{game.image.url}}" alt="{{game.name}} image">
-            {% endfor %}
-
+                <img src="{{game.image.url}}" alt="{{game.game}} image">
+                <p>{{ game.game }}</p>
+            {% endfor %}
         {% else %}
         <strong>There are no games present.</strong>
         {% endif %}

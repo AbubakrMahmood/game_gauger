@@ -1,5 +1,6 @@
 from django.db import models
 import numpy as np
+from django.contrib import admin
 
 Genre_list=( ("","Please Select"),
     ('ACTION','Action'),
@@ -15,18 +16,26 @@ Genre_list=( ("","Please Select"),
 )
 
 class Game(models.Model):
-    name = models.CharField(max_length=100, unique=True)
+    game = models.CharField(max_length=100)
     genre = models.CharField(max_length=30)
     publisher = models.CharField(max_length=50)
     developer = models.CharField(max_length=50)
     image = models.ImageField(upload_to = 'media/', default = 'media/None/no-img.jpg')
+    slug = models.SlugField(unique=True)
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.game)
+        super(Game, self).save(*args, **kwargs)
+    
     def average_rating(self):
         all_ratings = map(lambda x: x.rating, self.review_set.all())
         return np.mean(all_ratings)
+    
+    def __str__(self):
+        return self.game
 
     def __unicode__(self):
-        return self.name
+        return self.game
 
 
 class Review(models.Model):

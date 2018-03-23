@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from reviews.models import Game
+from reviews.models import Game, Review
 
 # Create your views here.
 def index(request):
@@ -25,3 +25,20 @@ def signinsignup(request):
 
 def addgame(request):
     return render(request, 'reviews/addgame.html')
+
+#def show_game(request, game_name_slug):
+#    context_dict = {}
+#
+#    try:
+#        game = Game.objects.get(slug=game_name_slug)
+#
+#
+#        reviews = Review.objects.filter(game=game)
+#        context_dict['reviews'] = reviews
+#        context_dict['game'] = game
+#
+#    except Game.DoesNotExist:
+#        context_dict['game'] = None
+#        context_dict['reviews'] = None
+#
+#    return render(request, 'rango/game.html', context_dict)
