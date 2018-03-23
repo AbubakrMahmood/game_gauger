@@ -8,8 +8,8 @@ class ReviewAdmin(admin.ModelAdmin):
     list_filter = ['comment_date', 'user_name']
     search_fields = ['comment']
 
-class GameAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug':('game',)}
+#class GameAdmin(admin.ModelAdmin):
+#    prepopulated_fields = {'slug':('game',)}
     
-admin.site.register(Game,GameAdmin)
+admin.site.register(Game)
 admin.site.register(Review, ReviewAdmin)
