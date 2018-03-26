@@ -11,7 +11,7 @@ from django.template.defaultfilters import slugify
 def populate():
     # list of dictionaries containing reviews to add to each game
 
-    
+
     batman_arkham = add_game(UID=1,game='Batman: Arkham Asylum',genre='Action',
                              publisher='Warner Bros. Interactive Entertainment',
                              developer='Rocksteady Studios',
@@ -19,14 +19,14 @@ def populate():
 
     nier_automata = add_game(UID=2,game='Nier Automata',genre='Action',
                              publisher='Square Enix',
-                             developer='‎PlatinumGames',
+                             developer='PlatinumGames',
                              logo='media/Nier_Automata_Cover_JP.jpg')
 
     super_mario_odyssey = add_game(UID=3,game='Super Mario Odyssey',genre='Platform',
                              publisher='Nintendo',
                              developer='Nintendo EPD',
                              logo='media/super-mario-boxart.jpg')
-    
+
     arkham_review = add_review(game='Batman: Arkham Asylum', user_name = 'bob', comment='empty',
                                rating=4)
 
