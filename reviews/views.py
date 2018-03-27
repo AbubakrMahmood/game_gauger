@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from reviews.models import Game, Review, UserProfile
-from django.template import RequestContext
-from django.shortcuts import render_to_response
 from reviews.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
@@ -35,7 +33,8 @@ def register(request):
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
             user.set_password(user.password)
-            user.save()
+            user.save()
+
 
             profile = profile_form.save(commit=False)
             profile.user = user
@@ -69,9 +68,10 @@ def user_login(request):
             print("Invalid login details: {0}, {1}".format(username, password))
             return HttpResponse("Invalid login details supplied.")
 
-    else:
+    else:
+
         return render(request, 'reviews/signin.html', {})
-    
+
 @login_required
 def user_logout(request):
     logout(request)
@@ -82,21 +82,6 @@ def addgame(request):
 
 def detail(request, UID):
     game = Game.objects.get(pk=UID)
-    return render_to_response('reviews/detail.html', {'game':game}, RequestContext(request))
-
-#def show_game(request, game_name_slug):
-#    context_dict = {}
-#
-#    try:
-#        game = Game.objects.get(slug=game_name_slug)
-#
-#
-#        reviews = Review.objects.filter(game=game)
-#        context_dict['reviews'] = reviews
-#        context_dict['game'] = game
-#
-#    except Game.DoesNotExist:
-#        context_dict['game'] = None
-#        context_dict['reviews'] = None
-#
-#    return render(request, 'rango/game.html', context_dict)
+    reviews = Review.objects.all()
+    context_dict = {'game':game, 'reviews': reviews}
+    return render(request, 'reviews/detail.html', context=context_dict)
