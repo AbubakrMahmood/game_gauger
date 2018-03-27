@@ -30,23 +30,10 @@ def populate():
     arkham_review = add_review(game='Batman: Arkham Asylum', user_name = 'bob', comment='empty',
                                rating=4)
 
-    # goes through the games dictionary, then adds each game,
-    # and then adds all the associated reviews for that game
-    #for game, game_data in games.items():
-    ##   g = add game()
-    ##   for r in game_data["reviews"]:
-    ##       add_review(g, r["user_name"], r["comment"], r["rating"])
-
     # Print out the games we have added
     for g in Game.objects.all():
         for r in Review.objects.filter(game=g):
             print("- {0} - {1}".format(str(g), str(r)))
-
-    # Creating super user for ease
-    username = 'GamerGauger'
-    email = '2257419m@student.gla.ac.uk'
-    password = 'wadproject'
-    create_super_user(username, email, password)
 
 
 def add_review(game, user_name, comment, rating=0):

@@ -27,12 +27,21 @@
     <li class="nav-item">
         <a class="nav-link" href="/reviews/featured">Featured</a>
     </li>
+    {% if user.is_authenticated %}
         <li class="nav-item">
-        <a class="nav-link" href="/reviews/addgame">Add Game</a>
-    </li>
+            <a class="nav-link" href="/reviews/addgame">Add Game</a>
+        </li>
+        <li>
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        </li>
+    {% else %}
         <li class="nav-item">
-        <a class="nav-link" href="/reviews/signinsignup">Sign in/Sign up</a>
-    </li>
+            <a class="nav-link" href="/reviews/signin">Sign In</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/reviews/signup">Sign Up</a>
+        </li>
+    {% endif %}
         </ul>
     </nav>
     </div>

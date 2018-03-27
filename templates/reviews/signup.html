@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends 'reviews/base.html' %}
+
+{% load staticfiles %}
+
+{% block title_block %}
+    Sign up
+{% endblock %}
+
+ {% block body %}
+
+    <div>
+        <h1>Register for Game Gauger!</h1>
+        {% if registered %}
+            Rango says: <strong>thank you for registering!</strong>
+            <a href="{% url 'index' %}">Return to the homepage.</a><br />
+        {% else %}
+            <form id="user_form" method="post" action="{% url 'signup' %}" 
+                    enctype="multipart/form-data" >
+            
+                {% csrf_token %}
+                {{ user_form.as_p }}
+                {{ profile_form.as_p }}
+                <input type="submit" name="register" value="Register" />
+            </form>        {% endif %}
+    </div>
+
+
+
+{% endblock %}

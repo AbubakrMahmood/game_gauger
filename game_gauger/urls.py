@@ -22,15 +22,25 @@ from reviews import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    
     url(r'^reviews/$', views.index, name='index'),
+    
     url(r'^reviews/about', views.about, name='about'),
-    url(r'^reviews/featured', views.featured, name='featured'),
-    url(r'^reviews/signinsignup', views.signinsignup, name='signinsignup'),
-    url(r'^reviews/addgame', views.addgame, name='addgame'),
-    url(r'^reviews/categories', views.categories, name='categories'),
+    
+    url(r'^reviews/featured', views.featured,name='featured'),
+    
+    url(r'^reviews/signin/$',views.user_login, name='signin'),
+    
+    url(r'^reviews/signup/$', views.register, name='signup'),
+
+    url(r'^logout/$', views.user_logout, name='logout'),
+    
+    url(r'^reviews/addgame',views.addgame,name='addgame'),
+    
+    url(r'^reviews/categories',views.categories,name='categories'),
+    
     url(r'^reviews/(?P<UID>\d+)/$', views.detail, name='detail'),
-    #(r'^reviews/batman', views.batman, name='batman'),
-    #url(r'^reviews/mario', views.mario, name='mario'),
-    #url(r'^reviews/nier', views.nier, name='nier'),
+    
     url(r'^admin/', admin.site.urls),
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

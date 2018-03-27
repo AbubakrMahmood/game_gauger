@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Game, Review
+from .models import Game, Review,UserProfile
 
 class ReviewAdmin(admin.ModelAdmin):
     model = Review
