@@ -5,9 +5,9 @@
 
 {% block body %}
     {% if user.is_authenticated %}
-        <h1>Welcome to the Game Gauger, {{ user.username }}!</h1>
+        <h1>Welcome to Game Gauger, {{ user.username }}!</h1>
     {% else %}
-        <h1>Welcome to the Game Gauger!</h1>
+        <h1>Welcome to Game Gauger!</h1>
     {% endif %}
 
         {% if games %}
