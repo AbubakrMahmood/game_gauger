@@ -10,6 +10,6 @@ class ReviewAdmin(admin.ModelAdmin):
 
 class GameAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('game',)}
-    
+
 admin.site.register(Game, GameAdmin)
 admin.site.register(Review, ReviewAdmin)

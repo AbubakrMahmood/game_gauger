@@ -6,26 +6,46 @@
  {% block body %}
 
     <div>
+
+
         {% if game %}
             <h1> {{game.game}}</h1>
-	        <p> <img src="{{game.logo.url}}" > <br> Genre: {{game.genre}} <br>
-	        Publisher: {{game.publisher}}<br>
-	        Developer: {{game.developer}}<br>
-   
+            <div class="row">
+            <div class="column left">
+            <p style="float: left; font-size: 12pt; text-align: center;
+                    width: 30%; margin-right: 1%; margin-bottom: 0.5em;">
+                <img src="{{game.logo.url}}" width="220" height="300">
+            </p>
+            </div>
+            <div class="column right">
+            <p style="font-size: 12pt; text-align: left;">
+                Genre: <b>{{game.genre}}</b> <br>
+                Publisher: <b>{{game.publisher}}</b><br>
+                Developer: <b>{{game.developer}}</b><br>
+            </p></div>
+        {% endif %}
+    </div>
+
+    <div>
+        {% if game %}
             {% if reviews %}
-                <ul>
+                <p style="float: left; font-size: 12pt; margin-bottom: 20em; margin-right: 2%;">
                 {% for review in reviews %}
-                    {{ review.game }}
+                    <u>{{ review.user_name }} - {{ review.comment_date }}</u> <br />
+                    <b>Rated - {{ review.rating }} </b><br>
+                    {{ review.comment }}<br>
+
                 {% endfor %}
-                </ul>
+                </p>
 
             {% else %}
-                <strong>No reviews currently for this game.</strong>
+                <p style="float: left; font-size: 18pt; margin-bottom: 0.8em;">
+                    <strong>There are currently no reviews for this game.</strong></p>
             {% endif %}
         {% else %}
             The specified game does not exist!
         {% endif %}
-        
+
     </div>
 
 {% endblock %}

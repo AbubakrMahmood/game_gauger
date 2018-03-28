@@ -4,7 +4,21 @@
 {% load staticfiles %}
 
  {% block body %}
-    <h1>Add Game</h1>
+    <h1>Add a Game!</h1>
 
-<p>Add Game</p>
+    <form id="game_form" method="post" action="/reviews/addgame/">
+        {% csrf_token %}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+
+        {% for field in form.visible_fields %}
+
+            {{ field.help_text }}<br />
+            {{ field }}<br />
+            {{ field.errors }}
+
+        {% endfor %}
+        <br><input type="submit" name="submit" value="Add Game!" />
+    </form>
 {% endblock %}

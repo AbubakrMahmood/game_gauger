@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from reviews.models import Game, Review, UserProfile
-from reviews.forms import UserForm, UserProfileForm
+from reviews.forms import UserForm, UserProfileForm, GameForm
 from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
@@ -23,6 +23,52 @@ def FAQs(request):
 
 def categories(request):
     return render(request, 'reviews/categories.html')
+
+def categorychange(request):
+    game_list = Game.objects.filter(genre="Action")
+    game_list = Game.objects.exclude(genre="Adventure")
+    context_dict = {'games': game_list}
+    return render(request, 'reviews/categorychange.html', context=context_dict)
+
+def cataction(request):
+    game_list = Game.objects.filter(genre="Action")
+    context_dict = {'games': game_list}
+    return render(request, 'reviews/action.html', context=context_dict)
+
+def catactionadventure(request):
+    game_list = Game.objects.filter(genre="Action-Adventure")
+    context_dict = {'games': game_list}
+    return render(request, 'reviews/actionadventure.html', context=context_dict)
+
+def catadventure(request):
+    game_list = Game.objects.filter(genre="Adventure")
+    context_dict = {'games': game_list}
+    return render(request, 'reviews/adventure.html', context=context_dict)
+
+def catrpg(request):
+    game_list = Game.objects.filter(genre="RPG")
+    context_dict = {'games': game_list}
+    return render(request, 'reviews/rpg.html', context=context_dict)
+
+def catsim(request):
+    game_list = Game.objects.filter(genre="Simulation")
+    context_dict = {'games': game_list}
+    return render(request, 'reviews/simulation.html', context=context_dict)
+
+def catsport(request):
+    game_list = Game.objects.filter(genre="Sport")
+    context_dict = {'games': game_list}
+    return render(request, 'reviews/sport.html', context=context_dict)
+
+def catpuzzle(request):
+    game_list = Game.objects.filter(genre="Puzzle")
+    context_dict = {'games': game_list}
+    return render(request, 'reviews/puzzle.html', context=context_dict)
+
+def catmisc(request):
+    game_list = Game.objects.filter(genre="Misc")
+    context_dict = {'games': game_list}
+    return render(request, 'reviews/Misc.html', context=context_dict)
 
 def register(request):
     registered = False
@@ -78,7 +124,15 @@ def user_logout(request):
     return HttpResponseRedirect(reverse('index'))
 
 def addgame(request):
-    return render(request, 'reviews/addgame.html')
+    form = GameForm()
+    if request.method == 'POST':
+        form = GameForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return index(request)
+    else:
+        print(form.errors)
+    return render(request, 'reviews/addgame.html', {'form': form})
 
 def detail(request, game_name_slug):
     context_dict = {}
@@ -90,8 +144,11 @@ def detail(request, game_name_slug):
     except Game.DoesNotExist:
         context_dict['category'] = None
         context_dict['pages'] = None
-        
+
     return render(request, 'reviews/detail.html', context=context_dict)
+
+
+
 
 # Views for errors
 def error_404(request):

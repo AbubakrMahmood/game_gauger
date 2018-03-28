@@ -43,6 +43,22 @@ urlpatterns = [
     url(r'^reviews/(?P<game_name_slug>[\w\-]+)/$',
         views.detail, name='detail'),
 
+    url(r'^reviews/action',views.cataction,name='action'),
+
+    url(r'^reviews/actionadventure',views.catactionadventure,name='actionadventure'),
+
+    url(r'^reviews/adventure',views.catadventure,name='adventure'),
+
+    url(r'^reviews/rpg',views.catrpg,name='rpg'),
+
+    url(r'^reviews/simulation',views.catsim,name='simulation'),
+
+    url(r'^reviews/sport',views.catsport,name='sport'),
+
+    url(r'^reviews/puzzle',views.catpuzzle,name='puzzle'),
+
+    url(r'^reviews/misc',views.catmisc,name='misc'),
+
     url(r'^admin/', admin.site.urls),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
