@@ -17,30 +17,35 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import handler404, handler500
 
 from reviews import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    
+
     url(r'^reviews/$', views.index, name='index'),
-    
+
     url(r'^reviews/about', views.about, name='about'),
-    
+
     url(r'^reviews/featured', views.featured,name='featured'),
-    
+
     url(r'^reviews/signin/$',views.user_login, name='signin'),
-    
+
     url(r'^reviews/signup/$', views.register, name='signup'),
 
-    url(r'^logout/$', views.user_logout, name='logout'),
-    
+    url(r'^logout/$', views.user_logout, name='logout'),
+
     url(r'^reviews/addgame',views.addgame,name='addgame'),
-    
+
     url(r'^reviews/categories',views.categories,name='categories'),
-    
+
     url(r'^reviews/(?P<UID>\d+)/$', views.detail, name='detail'),
-    
+
     url(r'^admin/', admin.site.urls),
-    
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Error handlers
+handler404 = views.error_404
+handler500 = views.error_500

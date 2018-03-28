@@ -85,3 +85,12 @@ def detail(request, UID):
     reviews = Review.objects.all()
     context_dict = {'game':game, 'reviews': reviews}
     return render(request, 'reviews/detail.html', context=context_dict)
+
+# Views for errors
+def error_404(request):
+        data = {}
+        return render(request,'reviews/error_404.html', data)
+
+def error_500(request):
+        data = {}
+        return render(request,'reviews/error_500.html', data)
