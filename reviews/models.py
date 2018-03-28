@@ -42,20 +42,21 @@ class Game(models.Model):
     def __unicode__(self):
         return self.game
 
-
-class Review(models.Model):
-    RATING_CHOICES = (
+RATING_CHOICES=(
         (1, '1'),
         (2, '2'),
         (3, '3'),
         (4, '4'),
         (5, '5'),
-    )
+)
+
+class Review(models.Model):
+
     game = models.ForeignKey(Game)
     comment_date = models.DateTimeField(auto_now=True)
     user_name = models.CharField(max_length=100)
     comment = models.CharField(max_length=2000)
-    rating = models.IntegerField(max_length = 1, choices=RATING_CHOICES)
+    rating = models.IntegerField(choices=RATING_CHOICES)
 
 class UserProfile(models.Model):
     # Links UserProfile to a User model instance.
