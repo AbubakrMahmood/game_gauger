@@ -6,14 +6,12 @@
  {% block body %}
 
     <div>
-        <h1> {{game.game}}</h1>
-	    <p> <img src="{{game.logo.url}}" > <br> Genre: {{game.genre}} <br>
-	    Publisher: {{game.publisher}}<br>
-	    Developer: {{game.developer}}<br>
-    </div>
-
-    <div>
         {% if game %}
+            <h1> {{game.game}}</h1>
+	        <p> <img src="{{game.logo.url}}" > <br> Genre: {{game.genre}} <br>
+	        Publisher: {{game.publisher}}<br>
+	        Developer: {{game.developer}}<br>
+   
             {% if reviews %}
                 <ul>
                 {% for review in reviews %}
@@ -24,7 +22,8 @@
             {% else %}
                 <strong>No reviews currently for this game.</strong>
             {% endif %}
-
+        {% else %}
+            The specified game does not exist!
         {% endif %}
         
     </div>
