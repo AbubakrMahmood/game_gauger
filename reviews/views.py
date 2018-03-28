@@ -80,10 +80,17 @@ def user_logout(request):
 def addgame(request):
     return render(request, 'reviews/addgame.html')
 
-def detail(request, UID):
-    game = Game.objects.get(pk=UID)
-    reviews = Review.objects.all()
-    context_dict = {'game':game, 'reviews': reviews}
+def detail(request, game_name_slug):
+    context_dict = {}
+    try:
+        game = Game.objects.get(slug=game_name_slug)
+        reviews = Review.objects.filter(game=game)
+        context_dict['reviews'] = reviews
+        context_dict['game'] = game
+    except Game.DoesNotExist:
+        context_dict['category'] = None
+        context_dict['pages'] = None
+        
     return render(request, 'reviews/detail.html', context=context_dict)
 
 # Views for errors

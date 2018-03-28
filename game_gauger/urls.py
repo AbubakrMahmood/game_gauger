@@ -40,7 +40,8 @@ urlpatterns = [
 
     url(r'^reviews/categories',views.categories,name='categories'),
 
-    url(r'^reviews/(?P<UID>\d+)/$', views.detail, name='detail'),
+    url(r'^reviews/(?P<game_name_slug>[\w\-]+)/$',
+        views.detail, name='detail'),
 
     url(r'^admin/', admin.site.urls),
 

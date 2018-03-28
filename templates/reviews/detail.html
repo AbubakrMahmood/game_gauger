@@ -4,9 +4,30 @@
 {% load staticfiles %}
 
  {% block body %}
-	<h1> {{game.game}}</h1>
-	<p> <img src="{{game.logo.url}}" > <br> Genre: {{game.genre}} <br>
-	Publisher: {{game.publisher}}<br>
-	Developer: {{game.developer}}<br>
+
+    <div>
+        <h1> {{game.game}}</h1>
+	    <p> <img src="{{game.logo.url}}" > <br> Genre: {{game.genre}} <br>
+	    Publisher: {{game.publisher}}<br>
+	    Developer: {{game.developer}}<br>
+    </div>
+
+    <div>
+        {% if game %}
+            {% if reviews %}
+                <ul>
+                {% for review in reviews %}
+                    {{ review.game }}
+                {% endfor %}
+                </ul>
+
+            {% else %}
+                <strong>No reviews currently for this game.</strong>
+            {% endif %}
+        {% else %}
+            The specified game does not exist!
+        {% endif %}
+        
+    </div>
 
 {% endblock %}
